@@ -13,10 +13,12 @@ interface IProps {
 }
 
 const Slider:React.FC<IProps> = (props) => {
+    //convert img -> Image
     return (
-        <section>
+        <section className="relative shadow-2xl max-w-screen-2xl mx-auto">
             <Carousel
                 autoPlay
+                swipeable
                 infiniteLoop
                 showStatus={false}
                 showIndicators={true}
@@ -24,11 +26,9 @@ const Slider:React.FC<IProps> = (props) => {
                 interval={5000}
             >
                 {
-                props.popularMovies.map(movie => (
-                    <div>
-                        <div>
-                            <img loading="lazy" src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`} alt=""/>
-                        </div>
+                props.popularMovies.slice(0,6).map(movie => (
+                    <div>  
+                        <img loading="lazy" src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`} alt=""/>
                     </div>
                 ))
                 }   

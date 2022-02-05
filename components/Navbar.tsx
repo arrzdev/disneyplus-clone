@@ -1,18 +1,17 @@
 import Image from "next/image";
 import { HomeIcon, SearchIcon, PlusIcon, StarIcon } from "@heroicons/react/solid";
 
-import styles from "Header.module.css"
-
 const Header = () => {
     return(
-        <div className="sticky bg-[#040714] top-0 z-[1000] flex items-center px-10 h-[72px] md:px-12">
+        <div className="sticky bg-[#040714] top-0 z-[1000] flex items-center px-10 md:px-12 h-[72px]">
             <Image 
                 src="/images/logo.svg" 
+                alt = "Disney Mais"
                 width={80} 
                 height={80} 
                 className="cursor-pointer"
             />
-            <div className="ml-10 md:flex items-center space-x-6">
+            <div className="hidden ml-10 md:flex items-center space-x-6">
                 <a className="header-link group">
                     <HomeIcon className="h-4" />
                     <span className="span">Home</span>

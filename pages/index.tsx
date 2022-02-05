@@ -3,7 +3,8 @@ import Head from 'next/head'
 import Navbar from '@components/Navbar'
 import Slider from "@components/Slider"
 import Brands from "@components/Brands"
-import MediaHolder from "@components/MediaHolder"
+import MoviesCollection from "@components/MoviesCollection"
+import ShowsCollection from "@components/ShowsCollection"
 
 interface MovieInterface {	
 	title: string;
@@ -33,12 +34,16 @@ const Home:NextPage<PropsInterface> = (props) => {
     <div className="">
 		<Head>
 			<title>Disney+</title>
-			<link rel="icon" href="/favicon.ico" />
+			<link rel="icon" href="/favicon.ico"/>
 		</Head>
 		<Navbar/>
 		<main>
 			<Slider popularMovies={props.popularMovies}/> 
-			<Brands />
+			<Brands/>
+			<MoviesCollection title={"Popular Movies"} results={props.popularMovies}/>
+			<MoviesCollection title={"Top Rated Movies"} results={props.topRatedMovies}/>
+			<ShowsCollection title={"Popular Series"} results={props.popularShows}/>
+			<ShowsCollection title={"Top Rated Series"} results={props.topRatedShows}/>
 		</main>
 	</div>
   )
@@ -48,7 +53,7 @@ const Home:NextPage<PropsInterface> = (props) => {
 
 export const getStaticProps = async () => {
 	//Fetch tmdb popular movies
-	const popularMoviesRes = await fetch(`https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=${process.env.API_KEY}&language=pt-PT&external_source=imdb_id`)
+	const popularMoviesRes = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${process.env.API_KEY}&language=en-US&page=1`)
 	const popularShowsRes = await fetch(`https://api.themoviedb.org/3/tv/popular?api_key=${process.env.API_KEY}&language=en-US&page=1`)
 	const topRatedMoviesRes = await fetch(`https://api.themoviedb.org/3/movie/top_rated?api_key=${process.env.API_KEY}&language=en-US&page=1`)
 	const topRatedShowsRes = await fetch(`https://api.themoviedb.org/3/tv/top_rated?api_key=${process.env.API_KEY}&language=en-US&page=1`)
@@ -63,9 +68,9 @@ export const getStaticProps = async () => {
 	return {
 		props: {
 			popularMovies: popularMovies.results,
-			popularShows: popularMovies.results,
-			topRatedMovies: popularMovies.results,
-			topRatedShows: popularMovies.results,
+			popularShows: popularShows.results,
+			topRatedMovies: topRatedMovies.results,
+			topRatedShows: topRatedShows.results,
 		}
 	}
 }
