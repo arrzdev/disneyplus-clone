@@ -6,10 +6,14 @@ import Brands from "@components/Brands"
 import MoviesCollection from "@components/MoviesCollection"
 import ShowsCollection from "@components/ShowsCollection"
 
+//Interfaces of index / components need to be the same :D
+//Who would guess ahahaha
+
 interface MovieInterface {	
 	title: string;
+    id: number;
 	backdrop_path: string;
-	poster_path: string;
+    poster_path: string;
 	release_date: string;
 	vote_average: number;
 }
@@ -71,7 +75,8 @@ export const getStaticProps = async () => {
 			popularShows: popularShows.results,
 			topRatedMovies: topRatedMovies.results,
 			topRatedShows: topRatedShows.results,
-		}
+		},
+		revalidate: 5400 //revalidate every 1 and a half hours
 	}
 }
 

@@ -2,8 +2,9 @@ import MovieThumbnail from "@components/MovieThumbnail"
 
 interface MovieInterface {	
 	title: string;
+    id: number;
 	backdrop_path: string;
-	poster_path: string;
+    poster_path: string;
 	release_date: string;
 	vote_average: number;
 }
@@ -20,8 +21,8 @@ const MoviesCollection:React.FC<IProps> = (props) => {
             <div className="flex space-x-6 overflow-y-hidden overflow-x-scroll scrollbar-hide p-2 -m-2">
                 {
                 props.results.map((result) => (
-                <MovieThumbnail poster_path={result.poster_path}/>
-                ))
+                <MovieThumbnail key={result.title} poster_path={result.poster_path}/>
+                ))  
                 }
             </div>
         </div>
