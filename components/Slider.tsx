@@ -3,6 +3,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css"
 
 interface IPopularMovies {	
 	title: string;
+    id: number;
 	backdrop_path:string;
 	release_date: string;
 	vote_average: number;
@@ -27,7 +28,7 @@ const Slider:React.FC<IProps> = (props) => {
             >
                 {
                 props.popularMovies.slice(0,6).map(movie => (
-                    <div>  
+                    <div>
                         <img loading="lazy" src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`} alt=""/>
                     </div>
                 ))
