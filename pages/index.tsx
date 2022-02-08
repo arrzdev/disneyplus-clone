@@ -35,7 +35,7 @@ interface PropsInterface {
 
 const Home:NextPage<PropsInterface> = (props) => {
   return (
-    <div className="">
+    <div>
 		<Head>
 			<title>Disney+</title>
 			<link rel="icon" href="/favicon.ico"/>

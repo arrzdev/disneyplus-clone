@@ -18,9 +18,9 @@ const ShowsCollection:React.FC<IProps> = (props) => {
     return (
         <div className="flex flex-col space-y-2 my-8 px-8 max-w-[1400px] mx-auto">
             <h2 className="font-semibold">{props.title}</h2>
-            <div className="flex space-x-6 overflow-y-hidden overflow-x-scroll p-2 -m-2">
-                {props.results.map((result) => (
-                <ShowThumbnail poster_path={result.poster_path} />
+            <div className="flex space-x-6 overflow-y-hidden overflow-x-scroll p-2 -m-2 scrollbar">
+                {props.results.map((show) => (
+                <ShowThumbnail key={show.name} poster_path={show.poster_path} />
             ))}
             </div>
         </div>

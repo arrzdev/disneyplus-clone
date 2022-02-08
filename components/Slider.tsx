@@ -20,7 +20,6 @@ const Slider:React.FC<IProps> = ({ popularMovies }) => {
         <section className="relative shadow-2xl max-w-screen-2xl mx-auto">
             <Carousel
                 autoPlay
-                swipeable
                 infiniteLoop
                 showStatus={false}
                 showIndicators={true}
@@ -29,9 +28,7 @@ const Slider:React.FC<IProps> = ({ popularMovies }) => {
             >
                 {
                 popularMovies.slice(0,6).map(movie => (
-                    <div>
-                        <img loading="lazy" src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`} alt=""/>
-                    </div>
+                    <img loading="lazy" key={movie.title} src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`} alt=""/>
                 ))
                 }   
             </Carousel>
